@@ -9,9 +9,9 @@ echo "server {
     listen 80;
     listen [::]:80 default_server;
     root /var/www/html;
-    index index.nginx-debian.html
+    index index.nginx-debian.html;
     location /redirect_me {
-        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
     }
 }" > /etc/nginx/sites-available/default
 sudo service nginx restart
