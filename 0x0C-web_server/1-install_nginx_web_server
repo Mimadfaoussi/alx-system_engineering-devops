@@ -3,9 +3,16 @@
 # The installed server listens to port 80 (HTTP) for connection
 # And serves a default page index.html on the HTTP  GET request.
 
-sudo apt-get update -y
+sudo apt-get update
+sudo apt-get -y install nginx
 
-sudo apt-get install nginx -y
-sudo chown -R ubuntu /var/www
-echo 'Hello World!' > /var/www/html/index.html
+sudo ufw allow 'Nginx HTTP'
+
+echo "Hello World!" | sudo tee /var/www/html/index.html
+
+sudo nginx -t
+
+# Restarting Nginx
 sudo service nginx start
+
+
