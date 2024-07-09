@@ -4,9 +4,10 @@
 sudo apt-get update -y
 sudo apt-get install nginx -y
 sudo service nginx start
-sudo su
-echo "Hello World!" > /var/www/html/index.nginx-debian.html
-echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
+echo "Hello World!" > index.nginx-debian.html
+sudo mv index.nginx-debian.html /var/www/html/
+echo "Ceci n'est pas une page" > custom_404.html
+sudo mv custom_404.html /var/www/html/
 echo "server{
     listen 80;
     listen [::]:80 default_server;
@@ -19,5 +20,7 @@ echo "server{
     location = /custom_404.html {
         root /var/www/html;
         internal;
-}" > /etc/nginx/sites-available/default
+}" > default
+sudo rm /etc/nginx/sites-available/default
+sudo mv default /etc/nginx/sites-available/default
 sudo service nginx restart
